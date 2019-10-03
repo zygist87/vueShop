@@ -1,7 +1,7 @@
 import CreateProduct from '@/views/CreateProduct'
 
 export default {
-    path: '/CreateProduct',
+    path: '/createproduct',
     name: 'CreateProduct',
     component: CreateProduct
 }

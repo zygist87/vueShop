@@ -1,9 +1,11 @@
 <template>
   <div class="product">
+    <button @click="$emit('click', product)">
+      {{ product.stared ? 'unstar' : 'star' }}
+    </button>
       <span v-if="product.stared">Stared!!</span>
     <h4> {{ product.title }} </h4>
     <p> {{ product.body }} </p>
-    <button @click="$emit('click', product)">Star</button>
     <router-link :to="{name: 'Product', params: {id: product.id}}">View this product</router-link>
   </div>
 </template>

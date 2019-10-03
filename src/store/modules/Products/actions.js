@@ -1,5 +1,5 @@
 import axios from '@/packages/vue-axios'
-import { FETCH_PRODUCTS, FETCH_PRODUCT } from './action-types'
+import { FETCH_PRODUCTS, FETCH_PRODUCT, CREATE_PRODUCT } from './action-types'
 import { SET_POSTS } from './mutation-types'
 
 export default {
@@ -14,6 +14,14 @@ export default {
             return product
         }
         const { data } = await axios.get(`/posts/${id}`)
+        return data
+    },
+    async [CREATE_PRODUCT]({ state, commit, dispatch }, payload) {
+        const { data } = await axios.post(`/posts`, payload)
+        if (!state.products.length) {
+            await dispatch(FETCH_PRODUCTS)
+        }
+        commit(SET_PRODUCTS, [data, ...state.products])
         return data
     }
 }

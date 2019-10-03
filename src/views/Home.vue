@@ -1,6 +1,5 @@
 <template>
-<div>
-  <h1> App </h1>
+<div class="home">
     <Product
     v-for="product in products" 
     :key="product.id"
@@ -49,5 +48,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  & > * {
+    flex: 0 0 25%;
+  }
+}
 </style>
